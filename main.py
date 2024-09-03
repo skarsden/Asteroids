@@ -16,6 +16,12 @@ def main():
                 return
         for x in UPDATABLE:
             x.update(dt)
+
+        for x in ASTEROIDS:
+            if x.collision_detect(player):
+                print("Game Over")
+                return
+
         screen.fill("black")
         for x in DRAWABLE:
             x.draw(screen)

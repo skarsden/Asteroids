@@ -14,13 +14,17 @@ class AsteroidField(pygame.sprite.Sprite):
             lambda y: pygame.Vector2(SCREEN_WIDTH + ASTEROID_MAX_RADIUS, y * SCREEN_HEIGHT),
         ],
         [
+            pygame.Vector2(0, 1),
+            lambda x: pygame.Vector2(x * SCREEN_WIDTH, -ASTEROID_MAX_RADIUS),
+        ],
+        [
             pygame.Vector2(0, -1),
             lambda x: pygame.Vector2(x * SCREEN_WIDTH, SCREEN_HEIGHT + ASTEROID_MAX_RADIUS),
         ],
     ]
 
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self, UPDATABLE)
+        pygame.sprite.Sprite.__init__(self, self.containers)
         self.spawn_timer = 0.0
 
     def spawn(self, radius, position, velocity):
